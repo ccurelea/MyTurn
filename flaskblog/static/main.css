@@ -2,6 +2,7 @@ body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -77,4 +78,61 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.searchbar {
+    height: 100vh; 
+    background-image:  url(waiting.png);
+    background-size: cover;
+    background-position: center;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.h1text {
+    text-align: center;
+    color: fff; 
+    margin-bottom: 70px;
+    font-size: 45px; 
+    letter-spacing: 2px;
+    font-weight: bold;
+    
+}
+
+span {
+    color: #1D8ECE; 
+}
+
+.search-field {
+    height: 50px;
+    padding: 10px;
+}
+
+.skills {
+    width: 400px;
+}
+
+.location {
+    width: 200px;
+}
+
+.searchbutton {
+    height: 50px;
+    width; 200px; 
+    background: #1D8ECE; 
+    color: #FFFFFF;
+}
+
+.searchbutton:hover {
+    background: #FFFFFF;
+    color: #000000;
+    cursor: pointer;
+}
+
+.form-box {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 30px 50px; 
+        
 }
