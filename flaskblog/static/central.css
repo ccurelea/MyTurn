@@ -1,0 +1,44 @@
+.navbar {
+    position: fixed;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #E53C38;
+    width: 100%;
+    height: 60px;
+    z-index: 1;
+    color: aliceblue;
+    padding: 0px;
+}
+
+.nav {
+    display: flex;
+    justify-content: right;
+    list-style: none;
+    margin-right: 15px;
+    color: #456723;
+    font: bold 12px Arial, Helvetica, Sans-serif;
+}
+
+.logo {
+    flex: 1 1 auto;
+    margin-left: 10%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font: bold 30px Arial, Helvetica, Sans-serif;
+    color: aliceblue;
+}
+
+a{
+    margin: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover {
+    color: #D3D3D3; 
+}
