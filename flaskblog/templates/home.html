@@ -20,13 +20,13 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">MyTurn</a>
+              <a class="logo" href="#"><img src="percepta%20white.png"></img></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Find</a>
               <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
             </div>
             <!-- Navbar Right Side -->
@@ -67,15 +67,18 @@
         <form>
             <h1 class="h1text">FIND YOUR <span>DOCTOR'S</span> OFFICE</h1>
         <div class="form-box">
-        <input class="search-field skills" name="search" type="text" placeholder="Name of Clinic..."/>
-        <input class="search-field location" name="location" type="text" placeholder="Location"/>
+       
+            <select class="dropdown" placeholder="Select Clinic" name= colours method="GET" action="/">
+    {% for theUsers in theUsers %}
+    <option value= "{{theUsers}}" SELECTED>{{theUsers}}</option>"
+    {% endfor %}
+</select>
         <button class="searchbutton" type="button">Search</button>
 
             
         </div>
         
         </form>
-
 
 
 

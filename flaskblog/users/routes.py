@@ -105,3 +105,8 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
+@users.route('/', methods=['GET'])
+def dropdown():
+    colours = username.query.all()
+    return render_template('home.html', colours=colours)
+
