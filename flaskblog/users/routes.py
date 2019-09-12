@@ -1,10 +1,11 @@
 
-from flask import render_template, url_for, flash, redirect, request, Blueprint
+from flask import render_template, url_for, flash, redirect, request, Blueprint, Flask
 from flask_login import login_user, current_user, logout_user, login_required
 from flaskblog import db, bcrypt
 from flaskblog.models import User, Post
 from flaskblog.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                                    RequestResetForm, ResetPasswordForm)
+from flask_sqlalchemy import SQLAlchemy
 from flaskblog.users.utils import save_picture, send_reset_email
 users = Blueprint('users', __name__)
 
@@ -105,8 +106,5 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
-@users.route('/', methods=['GET'])
-def dropdown():
-    colours = username.query.all()
-    return render_template('home.html', colours=colours)
+
 

@@ -3,7 +3,10 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app 
 from flaskblog import db, login_manager
 from flask_login import UserMixin
-
+from wtforms_sqlalchemy.fields import QuerySelectField
+from flask_wtf import FlaskForm
+from flask_sqlalchemy import SQLAlchemy 
+from flask import Flask, render_template
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -32,8 +35,7 @@ class User(db.Model, UserMixin):
         return User.query.get(user_id)
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
-
+        return '[User {}]'.format(self.username)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,3 +46,6 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+    
+    
+    
