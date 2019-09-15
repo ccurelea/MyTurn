@@ -94,8 +94,17 @@ a.article-title:hover {
 .h1text {
     text-align: center;
     color: fff; 
-    margin-bottom: 70px;
+    margin-bottom: 30px;
     font-size: 45px; 
+    letter-spacing: 2px;
+    font-weight: bold;
+    
+}
+.h2text {
+    text-align: center;
+    color: fff; 
+    margin-bottom: 70px;
+    font-size: 20px; 
     letter-spacing: 2px;
     font-weight: bold;
     
@@ -140,6 +149,12 @@ span {
 
 .logo {
     width: 60px;
+}
+
+.aboutparagraph{
+    padding-top: 30px; 
     
-    
+}
+.abouttitle{
+        padding-top: 20px; 
 }

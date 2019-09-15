@@ -7,6 +7,8 @@ from wtforms_sqlalchemy.fields import QuerySelectField
 from flask_wtf import FlaskForm
 from flask_sqlalchemy import SQLAlchemy 
 from flask import Flask, render_template
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -20,6 +22,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
+
 
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -48,4 +51,5 @@ class Post(db.Model):
         return f"Post('{self.title}', '{self.date_posted}')"
     
     
+
     

@@ -20,7 +20,8 @@
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">MyTurn</a>
+          <a class="navbar-brand mr-4" href="/"><img src="/static/MyTurn.png" alt="Simply Easy Learning" width="80"
+         height="35"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -47,24 +48,12 @@
       </nav>
     </header>
     <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-              {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                  {{ message }}
-                </div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
-          {% block content %}{% endblock %}
-        </div>
-    
-      </div>
     </main>
      <div class="searchbar">
           <form action="/" method="POST">
+            <h1 class="h1text">SEE <span>LINEUPS</span> AND YOUR <span>SPOT</span> IN LINE</h1>
+            <h2 class="h2text">FIND YOUR DOCTOR'S OFFICE</h2>        
+
         {{ form.csrf_token }}
         {{ form.opts }}
         <ul>
