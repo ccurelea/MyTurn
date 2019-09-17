@@ -1,12 +1,12 @@
-
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from flaskblog import db, bcrypt
 from flaskblog.models import User, Post
 from flaskblog.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
-                                   RequestResetForm, ResetPasswordForm)
+                                   RequestResetForm, ResetPasswordForm, PostsForm)
 from flask_sqlalchemy import SQLAlchemy
 from flaskblog.users.utils import save_picture, send_reset_email
+
 users = Blueprint('users', __name__)
 
 @users.route("/register", methods=['GET', 'POST'])
@@ -20,7 +20,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('users.login'))
     return render_template('register.html', title='Register', form=form)
 
 
@@ -58,7 +58,7 @@ def account():
         current_user.email = form.email.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
-        return redirect(url_for('account'))
+        return redirect(url_for('users.account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
@@ -66,14 +66,30 @@ def account():
     return render_template('account.html', title='Account',
                            image_file=image_file, form=form)
 
-@users.route("/user/<string:username>")
+@users.route("/user/<string:username>", methods=['GET', 'POST'])
 def user_posts(username):
+    form = PostsForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('users.user_posts', username=current_user.username))
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
     posts = Post.query.filter_by(author=user)\
-        .order_by(Post.date_posted.desc())\
-        .paginate(page=page, per_page=5)
-    return render_template('user_posts.html', posts=posts, user=user)
+        .order_by(Post.date_posted.asc())\
+        .paginate(page=page, per_page=30)
+    return render_template('user_posts.html', posts=posts, user=user, form=form)
+def new_post():
+    form = PostsForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('users.user_posts', username=current_user.username))
+    return render_template('create_post.html', title='New Post',
+                           form=form, legend='New Post')
+
 
 
 @users.route("/reset_password", methods=['GET', 'POST'])
@@ -105,6 +121,5 @@ def reset_token(token):
         flash('Your password has been updated! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
-
 
 

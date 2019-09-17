@@ -158,3 +158,30 @@ span {
 .abouttitle{
         padding-top: 20px; 
 }
+
+.aboutpar{
+    padding-top: 20px;
+}
+
+.planstitle{
+    text-align: center;
+}
+.border-bottom1{
+    border-bottom: 3px solid #D3D3D3;
+    padding-top: 
+}
+ul {
+    list-style: none;
+    font-size: 30px; 
+}
+.list1 {
+    text-align: center;
+    font-size: 30px; 
+}
+span1 {
+    color: #1D8ECE; 
+    font-size: 50px;
+}
+.bottomfooter {
+    padding-bottom: 125px;
+}
