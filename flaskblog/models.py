@@ -3,7 +3,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app 
 from flaskblog import db, login_manager
 from flask_login import UserMixin
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
+from wtforms_sqlalchemy.fields import QuerySelectField
 from flask_wtf import FlaskForm
 from flask_sqlalchemy import SQLAlchemy 
 from flask import Flask, render_template
@@ -21,6 +21,14 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
+    businessname = db.Column(db.String(20), unique=True, nullable=True)
+    phonenumber = db.Column(db.String(10), unique=True, nullable=False)
+    address = db.Column(db.String(120), unique=True, nullable=False)
+    contactnamefirst = db.Column(db.String(20), unique=False, nullable=False)
+    contactnamelast = db.Column(db.String(20), unique=False, nullable=False)
+
+
+
     posts = db.relationship('Post', backref='author', lazy=True)
 
     
@@ -38,8 +46,8 @@ class User(db.Model, UserMixin):
         return User.query.get(user_id)
 
     def __repr__(self):
-        return '[User {}]'.format(self.username)
-
+        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+    
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)

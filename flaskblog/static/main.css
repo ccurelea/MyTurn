@@ -85,7 +85,7 @@ a.article-title:hover {
     background-image:  url(waiting.png);
     background-size: cover;
     background-position: center;
-    display: flex; 
+/*    display: flex; */
     justify-content: center; 
     align-items: center;
     font-family: sans-serif;
@@ -94,7 +94,7 @@ a.article-title:hover {
 .h1text {
     text-align: center;
     color: fff; 
-    margin-bottom: 30px;
+    padding-top: 200px;
     font-size: 45px; 
     letter-spacing: 2px;
     font-weight: bold;
@@ -103,7 +103,7 @@ a.article-title:hover {
 .h2text {
     text-align: center;
     color: fff; 
-    margin-bottom: 70px;
+    padding-top: 0px;
     font-size: 20px; 
     letter-spacing: 2px;
     font-weight: bold;
@@ -185,3 +185,21 @@ span1 {
 .bottomfooter {
     padding-bottom: 125px;
 }
+.select { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    
+    display: block;
+    margin-top: 0px;
+    padding: 10px 50px 10px 10px;
+    background: url("/static/select.png") no-repeat 95% center;
+    background-color: #ffffff;
+    color: grey;
+    border-radius: 0px;
+    border: 2px solid #fff;
+    align-content: center;
+    
+            } 

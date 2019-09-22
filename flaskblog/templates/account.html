@@ -48,6 +48,42 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+                <div class="form-group">
+                    {{ form.address.label() }}
+                    {{ form.address(class="form-control form-control-lg") }}
+                    {% if form.address.errors %}
+                        {% for error in form.address.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.phonenumber.label() }}
+                    {{ form.phonenumber(class="form-control form-control-lg") }}
+                    {% if form.phonenumber.errors %}
+                        {% for error in form.phonenumber.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.contactnamefirst.label() }}
+                    {{ form.contactnamefirst(class="form-control form-control-lg") }}
+                    {% if form.contactnamefirst.errors %}
+                        {% for error in form.contactnamefirst.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.contactnamelast.label() }}
+                    {{ form.contactnamelast(class="form-control form-control-lg") }}
+                    {% if form.contactnamelast.errors %}
+                        {% for error in form.contactnamelast.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}

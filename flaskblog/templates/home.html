@@ -34,7 +34,6 @@
             <div class="navbar-nav">
               {% if current_user.is_authenticated %}
                 <a class="nav-item nav-link" href="{{ url_for('users.user_posts', username=current_user.username) }}">LineUp</a>
-                <a class="nav-item nav-link" href="{{ url_for('posts.new_post') }}">New Post</a>
                 <a class="nav-item nav-link" href="{{ url_for('users.account') }}">Account</a>
                 <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a>
 
@@ -50,27 +49,29 @@
     </header>
     <main role="main" class="container">
     </main>
+    
+    
      <div class="searchbar">   
-       <form action="/" method="POST">
-            <h1 class="h1text">SEE <span>LINEUPS</span> AND YOUR <span>SPOT</span> IN LINE</h1>
-            <h2 class="h2text">FIND YOUR DOCTOR'S OFFICE</h2>    
-
-        {{ form.csrf_token }}
-        {{ form.opts }}
-        <ul>
-            {% for error in form.opts.errors %}
-            <li style="color:red;">{{ error }}</li>
-            {% endfor %}
-        </ul>
-        <input type="submit">
-
-    </form>
-
-
-
-
+         <br><br><br>
+         <h1 class="h1text">SEE <span>LINEUPS</span> AND YOUR <span>SPOT</span> IN LINE</h1><br><br>
+        <h2 class="h2text">FIND YOUR DOCTOR'S OFFICE</h2>   <br><br>
+         
+ <div>
+     <center>
+    <select class="select"name="names" onchange="if (this.value) window.location.href=this.value">
+        <option value="/"> Select your clinic below</option>
+        {% for new_name in new_names %}
+            <option value="/user/{{new_name}}">{{new_name}}</option>
+        {% endfor %}
+    </select>
+         </center>
+        </div>
+   
+         
 
     </div>
+ 
+   
 
 
     <!-- Optional JavaScript -->
@@ -79,6 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+    
     <!-- Footer -->
 <footer class="page-footer font-small blue pt-4" style="background-color: #5F788A; color:#ffffff">
 

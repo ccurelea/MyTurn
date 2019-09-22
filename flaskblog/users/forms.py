@@ -14,6 +14,14 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
+    phonenumber = StringField('Phone Number',
+                        validators=[DataRequired(), Length(min=2, max=10)])
+    address = StringField('Address',
+                        validators=[DataRequired(), Length(min=2, max=120)])
+    contactnamefirst = StringField('First Name',
+                        validators=[DataRequired(), Length(min=2, max=40)])
+    contactnamelast = StringField('Last Name',
+                        validators=[DataRequired(), Length(min=2, max=40)])
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
@@ -41,6 +49,14 @@ class UpdateAccountForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    phonenumber = StringField('Phone Number',
+                        validators=[DataRequired(), Length(min=2, max=10)])
+    address = StringField('Address',
+                        validators=[DataRequired(), Length(min=2, max=120)])
+    contactnamefirst = StringField('First Name',
+                        validators=[DataRequired(), Length(min=2, max=40)])
+    contactnamelast = StringField('Last Name',
+                        validators=[DataRequired(), Length(min=2, max=40)])
     submit = SubmitField('Update')
 
     def validate_username(self, username):
@@ -76,4 +92,7 @@ class PostsForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content')
     submit = SubmitField('Post')
-
+    
+class SignupForm(FlaskForm):
+    submit = SubmitField('Do this')
+    

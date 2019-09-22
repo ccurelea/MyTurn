@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>Our Plans</h1>
-<div class="content-section plans">
+<div style="display: flex; position">
+<div class="content-section plans" style="width: 500px; padding-right: 20px;">
     <h1 class="planstitle"> Free Trial</h1>
     <h3 class="planstitle"> <span>$0</span>/month</h1>
     <div class="border-bottom1 mb-4"></div>
@@ -12,7 +13,7 @@
     </div>
 
 </div>
-<div class="content-section plans">
+<div class="content-section plans" style="width: 500px; font-size: 15px;">
     <h1 class="planstitle"> Premium </h1>
     <h3 class="planstitle"> <span>$19</span>/month</h1>
     <div class="border-bottom1 mb-4"></div>
@@ -20,9 +21,12 @@
   <p><span1>✓</span1>    Monthly Basis</p>
   <p><span1>✓</span1>    ∞ Lineups per Clinic</p>
   <p><span1>✓</span1>    ∞ Lineup Legnth</p>
-    </div>
-
-
+  <p><span1>✓</span1>   In office Poster with unique URL</p>
+</div>
+<div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+</div>
 </div>
     <div class="border-top pt-3">
 </div>
